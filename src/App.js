@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import {Component} from "react";
+import Input from "./components/Input";
+import Result from "./components/Result";
+import {connect} from "react-redux";
+import {input} from "./store/reducers/predictReducer";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+    render() {
+
+    const {value, input, result, newGame } = this.props
+
+    return (
+        <div className="App">
+            {!!newGame && <div>New game started!!!</div>}
+            <Input value={value} input={input} />
+            <Result result={result} />
+        </div>
+    )
+  }
 }
+const mapStateToProps = ({slice}) => {
+    return {
+        value: slice.value,
+        result: slice.result,
+        newGame: slice.newGame
+    }
+}
+const mapDispatchToProps = {input}
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

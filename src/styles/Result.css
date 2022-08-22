@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ball {
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+}
+.ball.white-ball {
+    background-color: white;
+    border: 1px solid black
+}
+.ball.black-ball {
+    background-color: black;
+    border: 1px solid black
+}
